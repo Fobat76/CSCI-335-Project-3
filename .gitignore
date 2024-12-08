@@ -32,3 +32,12 @@
 *.app
 
 *.tsp
+
+# Ignore VSCode workspace settings and folders
+.vscode/
+
+# Optionally, ignore specific VSCode settings files (if you want to avoid sharing settings)
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
