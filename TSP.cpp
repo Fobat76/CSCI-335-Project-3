@@ -53,7 +53,7 @@ std::list<Node> TSP::constructCities(const std::string& filename) {
 // };
 
 
-inline Node findCityBasedOnID(int start_id,std::list<Node> &cities){
+Node TSP::findCityBasedOnID(int start_id,std::list<Node> &cities){
   for(auto x:cities){
     if(x.id == start_id){
       return x;
@@ -66,7 +66,7 @@ TSP::Tour nearestNeighbor(std::list<Node> cities, const size_t& start_id){
   TSP::Tour returnTour = TSP::Tour();
 
   std::unordered_set<int> vistedCities;
-  Node Currentcity = findCityBasedOnID(start_id,cities);
+  Node Currentcity = TSP::findCityBasedOnID(start_id,cities);
   vistedCities.insert(Currentcity.id);
 
   while(vistedCities.size() != cities.size()){
@@ -83,13 +83,13 @@ TSP::Tour nearestNeighbor(std::list<Node> cities, const size_t& start_id){
         }
       }
     }
-    returnTour.path.push_back(findCityBasedOnID(nextcity,cities));
+    returnTour.path.push_back(TSP::findCityBasedOnID(nextcity,cities));
     returnTour.weights.push_back(min);
     returnTour.total_distance += min;
     vistedCities.insert(nextcity);
-    Currentcity = findCityBasedOnID(nextcity,cities);
+    Currentcity = TSP::findCityBasedOnID(nextcity,cities);
   }
-  returnTour.path.push_back(findCityBasedOnID(start_id,cities));
+  returnTour.path.push_back(TSP::findCityBasedOnID(start_id,cities));
   returnTour.weights.push_back(0);
   return returnTour;
 }

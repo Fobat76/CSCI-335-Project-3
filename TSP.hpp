@@ -59,4 +59,6 @@ namespace TSP {
  *
  */
   Tour nearestNeighbor(std::list<Node> cities, const size_t& start_id = 1);
+
+  Node findCityBasedOnID(int start_id,std::list<Node> &cities);
 };
