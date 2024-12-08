@@ -64,10 +64,13 @@ Node& TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
 TSP::Tour TSP::nearestNeighbor(std::list<Node> cities, const size_t& start_id){
   //Return Value
   TSP::Tour returnTour = TSP::Tour();
+
   //Stores Visited Cities
   std::unordered_set<size_t> vistedCities;
+
   //Initialize current city 
   Node Currentcity = findCityBasedOnID(start_id,cities);
+  returnTour.path.push_back(Currentcity);
   //Marke current city as found 
   vistedCities.insert(Currentcity.id);
   //While all the cities arent visited
@@ -91,11 +94,9 @@ TSP::Tour TSP::nearestNeighbor(std::list<Node> cities, const size_t& start_id){
     vistedCities.insert(nextcity);
     Currentcity = TSP::findCityBasedOnID(nextcity,cities);
   }
-  size_t returnDistance = Currentcity.distance(findCityBasedOnID(start_id, cities));
-
-  returnTour.path.push_back(findCityBasedOnID(start_id, cities));
-  returnTour.weights.push_back(returnDistance);
-  returnTour.total_distance += returnDistance;
-
+  returnTour.weights.push_back(returnTour.path.back().distance(findCityBasedOnID(start_id,cities)));
+  returnTour.total_distance += returnTour.path.back().distance(findCityBasedOnID(start_id,cities));
+  returnTour.path.push_back(findCityBasedOnID(start_id,cities));
+  
   return returnTour;
 }

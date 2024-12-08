@@ -61,4 +61,11 @@ namespace TSP {
   TSP::Tour nearestNeighbor(std::list<Node> cities, const size_t& start_id = 1);
 
   Node& findCityBasedOnID(size_t start_id,std::list<Node> &cities);
+  struct edge{
+  size_t first;
+  size_t second;
+  size_t distance;
+
+  edge(size_t firstNode,size_t secondNode,size_t weight):first{firstNode},second{secondNode},distance{weight}{};
+};
 };
