@@ -53,8 +53,8 @@ std::list<Node> TSP::constructCities(const std::string& filename) {
 // };
 
 
-Node TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
-  for(auto x:cities){
+Node& TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
+  for(auto &x:cities){
     if(x.id == start_id){
       return x;
     }
@@ -65,14 +65,14 @@ TSP::Tour nearestNeighbor(std::list<Node> cities, const size_t& start_id){
   //Return Value
   TSP::Tour returnTour = TSP::Tour();
 
-  std::unordered_set<int> vistedCities;
+  std::unordered_set<size_t> vistedCities;
   Node Currentcity = TSP::findCityBasedOnID(start_id,cities);
   vistedCities.insert(Currentcity.id);
 
   while(vistedCities.size() != cities.size()){
     size_t min = std::numeric_limits<size_t>::max();
-    int nextcity = -1;
-    for(auto x : cities){
+    size_t nextcity = -1;
+    for(auto &x : cities){
       if(vistedCities.find(x.id) != vistedCities.end()){
         continue;
       }
