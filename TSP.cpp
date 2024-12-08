@@ -80,15 +80,17 @@ TSP::Tour TSP::nearestNeighbor(std::list<Node> cities, const size_t& start_id){
         }
       }
     }
-    returnTour.path.push_back(findCityBasedOnID(nextcity,cities));
+    Currentcity = TSP::findCityBasedOnID(nextcity,cities);
+    returnTour.path.push_back(Currentcity);
     returnTour.weights.push_back(min);
     returnTour.total_distance += min;
     vistedCities.insert(nextcity);
-    Currentcity = TSP::findCityBasedOnID(nextcity,cities);
+    
   }
-  returnTour.weights.push_back(returnTour.path.back().distance(findCityBasedOnID(start_id,cities)));
-  returnTour.total_distance += returnTour.path.back().distance(findCityBasedOnID(start_id,cities));
-  returnTour.path.push_back(findCityBasedOnID(start_id,cities));
+  Currentcity = findCityBasedOnID(start_id,cities);
+  returnTour.weights.push_back(returnTour.path.back().distance(Currentcity));
+  returnTour.total_distance += returnTour.path.back().distance(Currentcity);
+  returnTour.path.push_back(Currentcity);
   
   return returnTour;
 }
