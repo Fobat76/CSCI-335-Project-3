@@ -59,7 +59,6 @@ Node& TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
       return x;
     }
   }
-  return *new Node(1,1,1);
 }
 
 TSP::Tour TSP::nearestNeighbor(std::list<Node> cities, const size_t& start_id){
