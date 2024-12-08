@@ -71,6 +71,7 @@ TSP::Tour TSP::nearestNeighbor(std::list<Node> cities, const size_t& start_id){
   //Initialize current city 
   Node Currentcity = findCityBasedOnID(start_id,cities);
   returnTour.path.push_back(Currentcity);
+  returnTour.weights.push_back(0);
   //Marke current city as found 
   vistedCities.insert(Currentcity.id);
   //While all the cities arent visited
