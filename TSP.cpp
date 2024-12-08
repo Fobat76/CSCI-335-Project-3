@@ -43,15 +43,6 @@ std::list<Node> TSP::constructCities(const std::string& filename) {
   }
   return cities;
 }
-// struct edge{
-//   Node city1;
-//   Node city2;
-//   int DistanceBetweenCities;
-
-//   edge(Node first, Node second,int weight):city1{first},city2{second},DistanceBetweenCities{weight}{};
-
-// };
-
 
 Node& TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
   for(auto &x:cities){
