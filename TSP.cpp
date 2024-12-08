@@ -53,7 +53,7 @@ std::list<Node> TSP::constructCities(const std::string& filename) {
 // };
 
 
-Node TSP::findCityBasedOnID(int start_id,std::list<Node> &cities){
+Node TSP::findCityBasedOnID(size_t start_id,std::list<Node> &cities){
   for(auto x:cities){
     if(x.id == start_id){
       return x;
